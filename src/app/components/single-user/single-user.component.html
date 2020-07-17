@@ -1,0 +1,8 @@
+<div >
+{{users["id"]}} {{users["name"]}} {{users["username"]}}
+
+  <div *ngFor="let post of posts">{{post.title}}{{post.userId}} <button>show details</button>
+
+  </div>
+</div>
+<router-outlet></router-outlet>

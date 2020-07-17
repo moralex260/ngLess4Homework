@@ -1,0 +1,6 @@
+
+<div *ngFor="let p of posts">
+  {{p.id}}-{{p.userId}}-{{p.title}}}
+  <button (click)="getPostDetails(p)">show post details</button>
+</div>
+<router-outlet></router-outlet>
