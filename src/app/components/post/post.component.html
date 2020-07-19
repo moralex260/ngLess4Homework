@@ -1,6 +1,9 @@
-
-<div *ngFor="let p of posts">
-  {{p.id}}-{{p.userId}}-{{p.title}}}
-  <button (click)="getPostDetails(p)">show post details</button>
+<div> {{post | json}}
+  <div><button>show comments</button></div>
 </div>
+<!--<div *ngFor="let p of posts">-->
+<!--  {{p.id}}-{{p.userId}}-{{p.title}}}-->
+<!--&lt;!&ndash;  <button (click)="getPostDetails(p)">show post details</button>&ndash;&gt;-->
+<!--</div>-->
+<!--<router-outlet></router-outlet>-->
 <router-outlet></router-outlet>

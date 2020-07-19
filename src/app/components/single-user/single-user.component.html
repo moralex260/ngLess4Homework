@@ -1,8 +1,7 @@
 <div >
-{{users["id"]}} {{users["name"]}} {{users["username"]}}
-
-  <div *ngFor="let post of posts">{{post.title}}{{post.userId}} <button>show details</button>
-
+<!-- {{users["name"]}} {{users["username"]}} {{users["id"]}}-->
+{{u.username}}{{u.name}}
+  <div *ngFor="let post of posts">{{post.id}} {{post.title}}{{post.userId}} <button (click)="showPostDetaile(post)">show post details</button>
   </div>
 </div>
 <router-outlet></router-outlet>

@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Post, User} from '../models/models';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 import {UserService} from '../services/user.service';
 import {PostService} from '../services/post.service';
 
@@ -13,18 +13,12 @@ export class PostComponent implements OnInit {
 @Input()
 posts: Post[];
 users: User[];
-
+post: Post;
   constructor(private activatedRoute: ActivatedRoute, private userService: UserService,
-              private postService: PostService, private router: Router) {
-    // this.activatedRoute.params.subscribe(params => postService.getAllPostsForUserId(params.userId).
-    // subscribe(value => this.posts = value));
-    // tslint:disable-next-line:no-unused-expression
-    console.log(history.state);
+              private postService: PostService) {
+    activatedRoute.params.subscribe(params => postService.getOnePost(params.id)
+      .subscribe(value => this.post = value));
   }
   ngOnInit(): void {
-  }
-
-  getPostDetails(p: Post): void {
-    this.router.navigate(['posts/:id', p.id]);
   }
 }

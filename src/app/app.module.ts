@@ -7,6 +7,9 @@ import {HttpClientModule} from '@angular/common/http';
 import { AllUsersComponent } from './components/all-user/all-user.component';
 import { SingleUserComponent } from './components/single-user/single-user.component';
 import { PostComponent } from './components/post/post.component';
+import {UserResolveService} from './components/services/user-resolve.service';
+import {NextRouteService} from './components/services/next-route.service';
+import {LeaveRouteService} from './components/services/leave-route.service';
 
 @NgModule({
   declarations: [
@@ -18,8 +21,13 @@ import { PostComponent } from './components/post/post.component';
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot([{path: 'users', component: AllUsersComponent, children:
-      [{path: ':id', component: SingleUserComponent, children: [{path: 'posts', component: PostComponent}]},
+    RouterModule.forRoot([{path: 'users', component: AllUsersComponent,
+      resolve: {xxx: UserResolveService},
+      canActivate: [NextRouteService],
+      children:
+      [{path: ':id', component: SingleUserComponent, children: [{path: 'posts/:id', component: PostComponent,
+        canDeactivate: [LeaveRouteService]
+      }]},
         ]}
     ])
   ],
